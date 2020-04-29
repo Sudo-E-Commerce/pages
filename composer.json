@@ -1,0 +1,29 @@
+{
+    "name": "sudo/page",
+    "description": "Page Sudo package",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Nguyen Viet Hieu",
+            "email": "hieunvph04479@gmail.com"
+        }
+    ],
+    "require": {
+        "sudo/core": "*@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sudo\\Page\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sudo\\Page\\Providers\\PageServiceProvider"
+            ],
+            "aliases": {}
+        }
+    }
+}

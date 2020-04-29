@@ -1,0 +1,1 @@
+@include('Table::components.link',['text' => $value->name, 'url' => route('admin.pages.edit', $value->id)])
