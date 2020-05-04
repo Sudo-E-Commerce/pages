@@ -1,8 +1,16 @@
-# Hướng dẫn sử dụng Sudo Page #
+## Hướng dẫn sử dụng Sudo Page ##
 
-## Cài đặt để sử dụng ##
+**Giới thiệu:** Đây là package dùng để quản lý Trang đơn của SudoCms.
 
-## Cấu hình tại Menu ##
+Mặc định package sẽ tạo ra giao diện quản lý cho toàn bộ trang đơn được đặt tại `/{admin_dir}/pages`, trong đó admin_dir là đường dẫn admin được đặt tại `config('app.admin_dir')`
+
+### Cài đặt để sử dụng ###
+
+- Package cần phải có base `sudo/core` để có thể hoạt động không gây ra lỗi
+- Để có thể sử dụng Package cần require theo lệnh `composer require sudo/page`
+- Chạy `php artisan migrate` để tạo các bảng phục vụ cho package
+
+### Cấu hình tại Menu ###
 
 	[
     	'type' 				=> 'multiple',
@@ -22,8 +30,11 @@
 			]
 		]
     ],
+ 
+- Vị trí cấu hình được đặt tại `config/SudoMenu.php`
+- Để có thể hiển thị tại menu, chúng ta có thể đặt đoạn cấu hình trên tại `config('SudoMenu.menu')`
 
-## Cấu hình tại Module ##
+### Cấu hình tại Module ###
 	
 	'pages' => [
 		'name' 			=> 'Trang đơn',
@@ -36,6 +47,6 @@
 		],
 	],
 
-## Publish ##
-
-## Sử dụng ##
+- Vị trí cấu hình được đặt tại `config/SudoModule.php`
+- Để có thể phân quyền, chúng ta có thể đặt đoạn cấu hình trên tại `config('SudoModule.modules')`
+ 

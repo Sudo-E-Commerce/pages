@@ -10,9 +10,7 @@
             "email": "hieunvph04479@gmail.com"
         }
     ],
-    "require": {
-        "sudo/core": "*@dev"
-    },
+    "require": {},
     "autoload": {
         "psr-4": {
             "Sudo\\Page\\": "src/"
