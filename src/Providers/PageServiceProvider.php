@@ -85,14 +85,21 @@ class PageServiceProvider extends ServiceProvider
     public function publish()
     {
         if ($this->app->runningInConsole()) {
-            // Chạy riêng page
-            $this->publishes([
+            $assets = [
                 //
-            ], 'sudo/page');
+            ];
+            $config = [
+                //
+            ];
+            $all = array_merge($assets, $config);
+            // Chạy riêng
+            $this->publishes($all, 'sudo/page');
+            $this->publishes($assets, 'sudo/page/assets');
+            $this->publishes($config, 'sudo/page/config');
             // Khởi chạy chung theo core
-            $this->publishes([
-                //
-            ], 'sudo/core');
+            $this->publishes($all, 'sudo/core');
+            $this->publishes($assets, 'sudo/core/assets');
+            $this->publishes($config, 'sudo/core/config');
         }
     }
 
