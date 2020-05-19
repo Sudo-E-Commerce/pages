@@ -11,7 +11,7 @@ class PageServiceProvider extends ServiceProvider
      * alias => path
      */
     private $configFile = [
-        
+        //
     ];
 
     /**
@@ -85,9 +85,14 @@ class PageServiceProvider extends ServiceProvider
     public function publish()
     {
         if ($this->app->runningInConsole()) {
+            // Chạy riêng page
             $this->publishes([
-                
+                //
             ], 'sudo/page');
+            // Khởi chạy chung theo core
+            $this->publishes([
+                //
+            ], 'sudo/core');
         }
     }
 
