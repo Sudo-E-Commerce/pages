@@ -114,7 +114,7 @@ class PageController extends AdminController
         $form->editor('detail', $data_edit->detail, 0, 'Nội dung');
         $form->checkbox('status', $data_edit->status, 1, 'Trạng thái');
         // lấy link xem
-        $link = (config('app.pages')) ? config('app.pages')::where('id', $id)->first()->getUrl() : '';
+        $link = (config('app.page_models')) ? config('app.page_models')::where('id', $id)->first()->getUrl() : '';
         $form->action('edit', $link);
         // Hiển thị form tại view
         return $form->render('edit', compact('id'));
