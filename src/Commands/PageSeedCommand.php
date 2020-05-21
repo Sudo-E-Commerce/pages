@@ -21,37 +21,41 @@ class PageSeedCommand extends Command {
         $created_at = $updated_at = date('Y-m-d H:i:s');
         $detail = '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis tempora pariatur est ipsam nisi saepe maxime quisquam soluta atque beatae rerum illum incidunt, aut harum unde, facilis nobis, consectetur. Inventore.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis tempora pariatur est ipsam nisi saepe maxime quisquam soluta atque beatae rerum illum incidunt, aut harum unde, facilis nobis, consectetur. Inventore.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis tempora pariatur est ipsam nisi saepe maxime quisquam soluta atque beatae rerum illum incidunt, aut harum unde, facilis nobis, consectetur. Inventore.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis tempora pariatur est ipsam nisi saepe maxime quisquam soluta atque beatae rerum illum incidunt, aut harum unde, facilis nobis, consectetur. Inventore.</p><ul><li><a href="#">Link</a></li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis tempora pariatur est ipsam nisi saepe maxime quisquam soluta atque beatae rerum illum incidunt, aut harum unde, facilis nobis, consectetur. Inventore.</li><li><a href="#">Link</a></li><li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis tempora pariatur est ipsam nisi saepe maxime quisquam soluta atque beatae rerum illum incidunt, aut harum unde, facilis nobis, consectetur. Inventore.</li></ul><table><thead><tr><th>Column 1</th><th>Column 2</th><th>Column 3</th></tr></thead><tbody><tr><td>data</td><td>data</td><td>data</td></tr><tr><td>data</td><td>data</td><td>data</td></tr><tr><td>data</td><td>data</td><td>data</td></tr></tbody></table>';
 
-        $pages = [];
-        $seos = [];
-        $lang_metas = [];
-        for ($i=0; $i < 100; $i++) {
-            $name = 'Trang đơn '.$i;
-            $pages[] = [
-                'name' => $name,
-                'slug' => str_slug($name),
-                'detail' => $detail,
-                'status' => 1,
-                'created_at' => $created_at,
-                'updated_at' => $updated_at,
-            ];
-            $seos[] = [
-                'type'              => 'pages',
-                'type_id'           => $i+1,
-                'title'             => '',
-                'description'       => '',
-                'robots'            => 'Index,Follow',
-            ];
-            $lang_metas[] = [
-                'lang_table'        => 'pages',
-                'lang_table_id'     => $i+1,
-                'lang_locale'       => 'vi',
-                'lang_code'         => getCodeLangMeta()
-            ];
+        $stt = 0;
+        for ($j=0; $j < 10; $j++) {
+            $pages = [];
+            $seos = [];
+            $lang_metas = [];
+            for ($i=0; $i < 1000; $i++) {
+                $stt++;
+                $name = 'Trang đơn '.$stt;
+                $pages[] = [
+                    'name' => $name,
+                    'slug' => str_slug($name),
+                    'detail' => $detail,
+                    'status' => 1,
+                    'created_at' => $created_at,
+                    'updated_at' => $updated_at,
+                ];
+                $seos[] = [
+                    'type'              => 'pages',
+                    'type_id'           => $stt,
+                    'title'             => '',
+                    'description'       => '',
+                    'robots'            => 'Index,Follow',
+                ];
+                $lang_metas[] = [
+                    'lang_table'        => 'pages',
+                    'lang_table_id'     => $stt,
+                    'lang_locale'       => 'vi',
+                    'lang_code'         => getCodeLangMeta()
+                ];
+            }
+            DB::table('pages')->insert($pages);
+            DB::table('seos')->insert($seos);
+            DB::table('language_metas')->insert($lang_metas);
         }
-        DB::table('pages')->insert($pages);
-        DB::table('seos')->insert($seos);
-        DB::table('language_metas')->insert($lang_metas);
-        $this->echoLog('Trang don duoc tao thanh cong. So luong: '.count($pages));
+        $this->echoLog('Trang don duoc tao thanh cong. So luong: '.$stt);
     }
 
     public function echoLog($string) {
