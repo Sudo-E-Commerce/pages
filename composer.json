@@ -1,6 +1,6 @@
 {
     "name": "sudo/page",
-    "description": "Page Sudo package",
+    "description": "Page Sudo package test",
     "type": "library",
     "license": "MIT",
     "minimum-stability": "dev",
