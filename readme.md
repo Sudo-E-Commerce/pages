@@ -6,7 +6,7 @@ Mặc định package sẽ tạo ra giao diện quản lý cho toàn bộ trang 
 
 ### Cài đặt để sử dụng ###
 
-- Package cần phải có base `sudo/core` để có thể hoạt động không gây ra lỗi
+- Package cần phải có base `sudo/core` để có thể hoạt động không gây ra lỗi.
 - Để có thể sử dụng Package cần require theo lệnh `composer require sudo/page`
 - Chạy `php artisan migrate` để tạo các bảng phục vụ cho package
 
